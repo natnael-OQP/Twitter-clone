@@ -3,7 +3,7 @@ import React from 'react'
 
 interface Props {
     image: string
-    size: number
+    size?: number
 }
 
 const Avatar = ({ image, size = 50, ...other }: Props) => {
