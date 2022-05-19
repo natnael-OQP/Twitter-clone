@@ -1,58 +1,65 @@
 const tweets = [
-  {
-    id: 't1',
-    user: {
-      id: 'u1',
-      username: 'SavinVadim_',
-      name: 'Vadim Savin',
-      image: 'https://scontent.fkiv3-1.fna.fbcdn.net/v/t31.0-8/s960x960/22256588_1932617800312085_5686197942193420542_o.jpg?_nc_cat=110&_nc_sid=85a577&_nc_ohc=svjjE7DUkc0AX9yjcdC&_nc_ht=scontent.fkiv3-1.fna&tp=7&oh=1df4116c73c45a32ebad070704ca3333&oe=5F6ECD77'
+    {
+        id: 't1',
+        user: {
+            id: 'u1',
+            username: 'natnael-oqp',
+            name: 'natnael',
+            image: 'https://avatars.githubusercontent.com/u/81810944?v=4',
+        },
+        createdAt: '2020-08-27T12:00:00.000Z',
+        content:
+            "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+        image: 'https://i.insider.com/5d03aa8e6fc9201bc7002b43?width=1136&format=jpeg',
+        numberOfComments: 123,
+        numberOfRetweets: 11,
+        numberOfLikes: 10,
     },
-    createdAt: '2020-08-27T12:00:00.000Z',
-    content: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
-    image: 'https://i.insider.com/5d03aa8e6fc9201bc7002b43?width=1136&format=jpeg',
-    numberOfComments: 123,
-    numberOfRetweets: 11,
-    numberOfLikes: 10,
-  }, {
-    id: 't2',
-    user: {
-      id: 'u1',
-      username: 'SavinVadim_',
-      name: 'Vadim Savin',
-      image: 'https://scontent.fkiv3-1.fna.fbcdn.net/v/t31.0-8/s960x960/22256588_1932617800312085_5686197942193420542_o.jpg?_nc_cat=110&_nc_sid=85a577&_nc_ohc=svjjE7DUkc0AX9yjcdC&_nc_ht=scontent.fkiv3-1.fna&tp=7&oh=1df4116c73c45a32ebad070704ca3333&oe=5F6ECD77'
+    {
+        id: 't2',
+        user: {
+            id: 'u1',
+            username: 'avneesh0612',
+            name: 'Avneesh Agarwal',
+            image: 'https://avatars.githubusercontent.com/u/76690419?v=4',
+        },
+        createdAt: '2020-08-27T12:00:00.000Z',
+        content:
+            "Hey Hey Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+        numberOfComments: 4,
+        numberOfRetweets: 11,
+        numberOfLikes: 99,
     },
-    createdAt: '2020-08-27T12:00:00.000Z',
-    content: 'Hey Hey Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
-    numberOfComments: 4,
-    numberOfRetweets: 11,
-    numberOfLikes: 99,
-  }, {
-    id: 't3',
-    user: {
-      id: 'u1',
-      username: 'SavinVadim_',
-      name: 'Vadim Savin',
-      image: 'https://scontent.fkiv3-1.fna.fbcdn.net/v/t31.0-8/s960x960/22256588_1932617800312085_5686197942193420542_o.jpg?_nc_cat=110&_nc_sid=85a577&_nc_ohc=svjjE7DUkc0AX9yjcdC&_nc_ht=scontent.fkiv3-1.fna&tp=7&oh=1df4116c73c45a32ebad070704ca3333&oe=5F6ECD77'
+    {
+        id: 't3',
+        user: {
+            id: 'u1',
+            username: 'vikasganiga05',
+            name: 'Vikas Ganiga ',
+            image: 'https://avatars.githubusercontent.com/u/74750414?s=100&v=4',
+        },
+        createdAt: '2020-08-27T12:00:00.000Z',
+        content:
+            "Hey Hey Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+        numberOfComments: 4,
+        numberOfRetweets: 11,
+        numberOfLikes: 99,
     },
-    createdAt: '2020-08-27T12:00:00.000Z',
-    content: 'Hello World',
-    numberOfComments: 4,
-    numberOfRetweets: 11,
-    numberOfLikes: 99,
-  }, {
-    id: 't4',
-    user: {
-      id: 'u1',
-      username: 'SavinVadim_',
-      name: 'Vadim Savin',
-      image: 'https://scontent.fkiv3-1.fna.fbcdn.net/v/t31.0-8/s960x960/22256588_1932617800312085_5686197942193420542_o.jpg?_nc_cat=110&_nc_sid=85a577&_nc_ohc=svjjE7DUkc0AX9yjcdC&_nc_ht=scontent.fkiv3-1.fna&tp=7&oh=1df4116c73c45a32ebad070704ca3333&oe=5F6ECD77'
+    {
+        id: 't4',
+        user: {
+            id: 'u1',
+            username: 'yassineboukhla',
+            name: 'Yassine Boukhla ',
+            image: 'https://avatars.githubusercontent.com/u/66229810?s=100&v=4',
+        },
+        createdAt: '2020-08-27T12:00:00.000Z',
+        content:
+            "Hey Hey Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+        numberOfComments: 4,
+        numberOfRetweets: 11,
+        numberOfLikes: 99,
     },
-    createdAt: '2020-08-27T12:00:00.000Z',
-    content: 'Hey Hey Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
-    numberOfComments: 4,
-    numberOfRetweets: 11,
-    numberOfLikes: 99,
-  }
-];
+]
 
 export default tweets;
