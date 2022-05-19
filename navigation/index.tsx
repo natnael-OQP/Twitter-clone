@@ -18,7 +18,7 @@ import Colors from '../constants/Colors'
 import useColorScheme from '../hooks/useColorScheme'
 import ModalScreen from '../screens/ModalScreen'
 import NotFoundScreen from '../screens/NotFoundScreen'
-import TabOneScreen from '../screens/TabOneScreen'
+import HomeScreen from '../screens/HomeScreen'
 import TabTwoScreen from '../screens/TabTwoScreen'
 import {
     RootStackParamList,
@@ -89,7 +89,7 @@ function BottomTabNavigator() {
         >
             <BottomTab.Screen
                 name="Home"
-                component={TabOneScreen}
+                component={HomeScreen}
                 options={({ navigation }: RootTabScreenProps<'Home'>) => ({
                     tabBarIcon: ({ color, size }) => (
                         <Ionicons name="home" size={size} color={color} />
@@ -106,7 +106,7 @@ function BottomTabNavigator() {
                     },
                     headerLeft: () => (
                         <Avatar
-                            image="https://notjustdev-dummy.s3.us-east-2.amazonaws.com/avatars/10.png"
+                            image="https://avatars.githubusercontent.com/u/81810944?v=4"
                             size={42}
                         />
                     ),
