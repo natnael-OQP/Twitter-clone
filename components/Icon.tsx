@@ -8,7 +8,7 @@ interface Props {
     number?: number
 }
 
-const Icon = ({ name, size = 35, color = '#ccc', number }: Props) => {
+const Icon = ({ name, size = 35, color = 'grey', number }: Props) => {
     return (
         <View style={styles.container}>
             <EvilIcons name={name} size={size} color={color} />
@@ -27,6 +27,6 @@ const styles = StyleSheet.create({
     },
     iconText: {
         marginLeft: 5,
-        color: '#ccc',
+        color: 'grey',
     },
 })
