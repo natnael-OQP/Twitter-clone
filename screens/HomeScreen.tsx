@@ -5,6 +5,7 @@ import { RootTabScreenProps } from '../types'
 import TweetComponent from '../components/TweetComponent'
 
 import tweets from '../assets/data/tweets'
+import Separator from '../components/Separator'
 
 export default function HomeScreen({ navigation }: RootTabScreenProps<'Home'>) {
     return (
@@ -14,6 +15,7 @@ export default function HomeScreen({ navigation }: RootTabScreenProps<'Home'>) {
                 keyExtractor={(item) => item.id}
                 renderItem={({ item }) => <TweetComponent tweet={item} />}
                 showsVerticalScrollIndicator={false}
+                ItemSeparatorComponent={Separator}
             />
         </View>
     )
@@ -21,6 +23,7 @@ export default function HomeScreen({ navigation }: RootTabScreenProps<'Home'>) {
 
 const styles = StyleSheet.create({
     container: {
+        backgroundColor: '#F2F2F2',
         flex: 1,
         alignItems: 'center',
     },
