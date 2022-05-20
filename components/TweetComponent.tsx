@@ -33,15 +33,10 @@ export default TweetComponent
 
 const styles = StyleSheet.create({
     container: {
+        backgroundColor: '#fff',
         width: '100%',
         flexDirection: 'row',
-        padding: 10,
-        borderBottomWidth: 0.1,
-        borderColor: 'grey',
-        shadowOpacity: 0.75,
-        shadowRadius: 5,
-        shadowColor: 'grey',
-        shadowOffset: { height: 0, width: 0 },
+        padding: 12,
     },
     leftContainer: {
         marginRight: 10,
