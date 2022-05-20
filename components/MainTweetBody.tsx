@@ -1,21 +1,31 @@
 import React from 'react'
-import { Image, StyleSheet, Text, View } from 'react-native'
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { TweetsProps } from '../types'
 import Icon from './Icon'
+import { Entypo } from '@expo/vector-icons'
+import moment from 'moment'
 
 interface Props {
     tweet: TweetsProps
 }
 
 const MainTweetBody = ({ tweet }: Props) => {
-    const { user, content, image } = tweet
+    const { user, content, image, createdAt } = tweet
 
     return (
         <View style={styles.container}>
             {/* username */}
             <View style={styles.header}>
-                <Text>{user.name}</Text>
-                <Text>{user.username}</Text>
+                <Text style={styles.name}>{user.name}</Text>
+                <Text style={styles.username}>{user.username}</Text>
+                {createdAt && (
+                    <Text style={styles.time}>
+                        {moment(createdAt).fromNow()}
+                    </Text>
+                )}
+                <TouchableOpacity style={{ marginLeft: 'auto' }}>
+                    <Entypo name="chevron-down" size={21} color="grey" />
+                </TouchableOpacity>
             </View>
             {/* content */}
             <View style={styles.main}>
@@ -38,20 +48,47 @@ const MainTweetBody = ({ tweet }: Props) => {
 export default MainTweetBody
 
 const styles = StyleSheet.create({
-    container: {},
-    header: {},
-    name: {},
-    username: {},
-    main: {},
-    content: {},
+    container: {
+        width: '100%',
+        flexDirection: 'column',
+    },
+    header: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        paddingVertical: 7,
+    },
+    name: {
+        fontSize: 16,
+        fontWeight: 'bold',
+        marginRight: 5,
+        textTransform: 'capitalize',
+    },
+    username: {
+        fontSize: 16,
+        fontWeight: '300',
+        marginRight: 5,
+    },
+    time: {
+        color: 'grey',
+        font: 12,
+    },
+    content: {
+        fontSize: 16,
+        fontWeight: '400',
+        marginRight: 7,
+        lineHeight: 19,
+    },
     image: {
         width: '100%',
         aspectRatio: 5 / 3,
         marginTop: 10,
+        borderRadius: 10,
     },
     footer: {
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'space-around',
+        justifyContent: 'space-between',
+        marginTop: 4,
+        marginLeft: -5,
     },
 })
