@@ -1,11 +1,12 @@
 import { FlatList, StyleSheet } from 'react-native'
 
-import { Text, View } from '../components/Themed'
+import { View } from '../components/Themed'
 import { RootTabScreenProps } from '../types'
 import TweetComponent from '../components/TweetComponent'
 
 import tweets from '../assets/data/tweets'
 import Separator from '../components/Separator'
+import CreateTweetButton from '../components/CreateTweetButton'
 
 export default function HomeScreen({ navigation }: RootTabScreenProps<'Home'>) {
     return (
@@ -17,6 +18,7 @@ export default function HomeScreen({ navigation }: RootTabScreenProps<'Home'>) {
                 showsVerticalScrollIndicator={false}
                 ItemSeparatorComponent={Separator}
             />
+            <CreateTweetButton />
         </View>
     )
 }
@@ -26,6 +28,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#F2F2F2',
         flex: 1,
         alignItems: 'center',
+        position: 'relative',
     },
     title: {
         fontSize: 20,
