@@ -28,7 +28,7 @@ const MainTweetBody = ({ tweet }: Props) => {
                 </TouchableOpacity>
             </View>
             {/* content */}
-            <View style={styles.main}>
+            <View>
                 <Text style={styles.content}>{content}</Text>
                 {image && (
                     <Image style={styles.image} source={{ uri: image }} />
