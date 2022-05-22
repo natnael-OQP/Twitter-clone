@@ -1,11 +1,21 @@
 import { StyleSheet, TouchableOpacity } from 'react-native'
 import Colors from '../constants/Colors'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
+import { useNavigation } from '@react-navigation/native'
 
 const CreateTweetButton = () => {
-    const onPress = () => {}
+    const navigation = useNavigation()
+
+    const onPress = () => {
+        navigation.navigate('NewTweetScreen')
+    }
+
     return (
-        <TouchableOpacity style={styles.cerateButton} onPress={onPress}>
+        <TouchableOpacity
+            style={styles.cerateButton}
+            onPress={onPress}
+            activeOpacity={0.85}
+        >
             <MaterialCommunityIcons
                 style={{ position: 'absolute', top: 13, left: 10 }}
                 name="plus"
