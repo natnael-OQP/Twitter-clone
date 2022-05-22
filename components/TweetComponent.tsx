@@ -22,9 +22,7 @@ const TweetComponent = ({ tweet }: Props) => {
             <View style={styles.leftContainer}>
                 <Avatar image={user?.image} size={50} />
             </View>
-            <View style={styles.mainContainer}>
-                <MainTweetBody tweet={tweet} />
-            </View>
+            <MainTweetBody tweet={tweet} />
         </View>
     )
 }
@@ -33,15 +31,12 @@ export default TweetComponent
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: '#fff',
         width: '100%',
         flexDirection: 'row',
         padding: 12,
+        backgroundColor: '#fff',
     },
     leftContainer: {
         marginRight: 10,
-    },
-    mainContainer: {
-        flex: 1,
     },
 })
