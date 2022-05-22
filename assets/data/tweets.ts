@@ -20,7 +20,7 @@ const tweets = [
         user: {
             id: 'u1',
             username: 'avneesh0612',
-            name: 'Avneesh Agarwal',
+            name: 'Avneesh',
             image: 'https://avatars.githubusercontent.com/u/76690419?v=4',
         },
         createdAt: '2020-08-27T12:00:00.000Z',
@@ -35,7 +35,7 @@ const tweets = [
         user: {
             id: 'u1',
             username: 'vikasganiga05',
-            name: 'Vikas Ganiga ',
+            name: 'Vikas  ',
             image: 'https://avatars.githubusercontent.com/u/74750414?s=100&v=4',
         },
         createdAt: '2020-08-27T12:00:00.000Z',
@@ -50,7 +50,7 @@ const tweets = [
         user: {
             id: 'u1',
             username: 'yassineboukhla',
-            name: 'Yassine Boukhla ',
+            name: 'Yassine  ',
             image: 'https://avatars.githubusercontent.com/u/66229810?s=100&v=4',
         },
         createdAt: '2020-08-27T12:00:00.000Z',
