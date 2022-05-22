@@ -28,6 +28,7 @@ import {
 import LinkingConfiguration from './LinkingConfiguration'
 import { Ionicons } from '@expo/vector-icons'
 import Avatar from '../components/Avatar'
+import NewTweetScreen from '../screens/NewTweetScreen'
 
 export default function Navigation({
     colorScheme,
@@ -52,7 +53,11 @@ const Stack = createNativeStackNavigator<RootStackParamList>()
 
 function RootNavigator() {
     return (
-        <Stack.Navigator>
+        <Stack.Navigator
+            screenOptions={{
+                headerShown: false,
+            }}
+        >
             <Stack.Screen
                 name="Root"
                 component={BottomTabNavigator}
@@ -63,9 +68,7 @@ function RootNavigator() {
                 component={NotFoundScreen}
                 options={{ title: 'Oops!' }}
             />
-            <Stack.Group screenOptions={{ presentation: 'modal' }}>
-                <Stack.Screen name="Modal" component={ModalScreen} />
-            </Stack.Group>
+            <Stack.Screen name="NewTweetScreen" component={NewTweetScreen} />
         </Stack.Navigator>
     )
 }
