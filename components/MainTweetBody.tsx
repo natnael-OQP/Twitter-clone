@@ -49,8 +49,7 @@ export default MainTweetBody
 
 const styles = StyleSheet.create({
     container: {
-        width: '100%',
-        flexDirection: 'column',
+        flex: 1,
     },
     header: {
         flexDirection: 'row',
@@ -70,7 +69,7 @@ const styles = StyleSheet.create({
     },
     time: {
         color: 'grey',
-        font: 12,
+        fontSize: 12,
     },
     content: {
         fontSize: 16,
