@@ -26,17 +26,10 @@ export default function HomeScreen({ navigation }: RootTabScreenProps<'Home'>) {
 const styles = StyleSheet.create({
     container: {
         backgroundColor: '#F2F2F2',
-        flex: 1,
-        alignItems: 'center',
         position: 'relative',
     },
     title: {
         fontSize: 20,
         fontWeight: 'bold',
-    },
-    separator: {
-        marginVertical: 30,
-        height: 1,
-        width: '80%',
     },
 })
