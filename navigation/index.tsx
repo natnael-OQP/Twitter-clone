@@ -97,15 +97,8 @@ function BottomTabNavigator() {
                     tabBarIcon: ({ color, size }) => (
                         <Ionicons name="home" size={size} color={color} />
                     ),
-                    headerTitle: () => (
-                        <Ionicons
-                            name="ios-logo-twitter"
-                            size={24}
-                            color={Colors.light.tint}
-                        />
-                    ),
                     headerLeftContainerStyle: {
-                        marginLeft: 15,
+                        marginLeft: 20,
                     },
                     headerLeft: () => (
                         <Avatar
@@ -113,8 +106,16 @@ function BottomTabNavigator() {
                             size={42}
                         />
                     ),
+                    headerTitleAlign: 'center',
+                    headerTitle: () => (
+                        <Ionicons
+                            name="ios-logo-twitter"
+                            size={24}
+                            color={Colors.light.tint}
+                        />
+                    ),
                     headerRightContainerStyle: {
-                        marginRight: 15,
+                        marginRight: 10,
                     },
                     headerRight: () => (
                         <Pressable
