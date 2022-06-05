@@ -97,14 +97,17 @@ function BottomTabNavigator() {
                     tabBarIcon: ({ color, size }) => (
                         <Ionicons name="home" size={size} color={color} />
                     ),
-                    headerLeftContainerStyle: {
-                        marginLeft: 20,
-                    },
                     headerLeft: () => (
-                        <Avatar
-                            image="https://avatars.githubusercontent.com/u/81810944?v=4"
-                            size={42}
-                        />
+                        <Pressable
+                            style={{
+                                marginLeft: 10,
+                            }}
+                        >
+                            <Avatar
+                                image="https://avatars.githubusercontent.com/u/81810944?v=4"
+                                size={42}
+                            />
+                        </Pressable>
                     ),
                     headerTitleAlign: 'center',
                     headerTitle: () => (
@@ -114,14 +117,12 @@ function BottomTabNavigator() {
                             color={Colors.light.tint}
                         />
                     ),
-                    headerRightContainerStyle: {
-                        marginRight: 10,
-                    },
                     headerRight: () => (
                         <Pressable
                             onPress={() => navigation.navigate('Modal')}
                             style={({ pressed }) => ({
                                 opacity: pressed ? 0.5 : 1,
+                                marginRight: 10,
                             })}
                         >
                             <MaterialCommunityIcons
