@@ -11,8 +11,6 @@ import awsconfig from './src/aws-exports'
 import { withAuthenticator } from 'aws-amplify-react-native'
 Amplify.configure(awsconfig)
 
-// import '@aws-amplify/ui-react/styles.css'
-
 function App() {
     const isLoadingComplete = useCachedResources()
     const colorScheme = useColorScheme()
