@@ -9,11 +9,23 @@ import { Amplify } from 'aws-amplify'
 import awsconfig from './src/aws-exports'
 
 import { withAuthenticator } from 'aws-amplify-react-native'
+import { useEffect } from 'react'
+import { Auth } from 'aws-amplify'
+
 Amplify.configure(awsconfig)
 
 function App() {
     const isLoadingComplete = useCachedResources()
     const colorScheme = useColorScheme()
+
+    useEffect(() => {
+        const updateUser = async () => {
+            const user = await Auth.currentAuthenticatedUser()
+            console.log(user)
+        }
+
+        updateUser()
+    }, [])
 
     if (!isLoadingComplete) {
         return null
