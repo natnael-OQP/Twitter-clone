@@ -8,7 +8,7 @@ type User @model {
     username: String!
     name: String!
     email: String!
-    image: String!
+    image: String
     tweets: [Tweet] @hasMany
 }
 
