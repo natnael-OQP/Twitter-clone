@@ -1,8 +1,3 @@
-/**
- * If you are not familiar with React Navigation, refer to the "Fundamentals" guide:
- * https://reactnavigation.org/docs/getting-started
- *
- */
 import { FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import {
@@ -29,6 +24,8 @@ import LinkingConfiguration from './LinkingConfiguration'
 import { Ionicons } from '@expo/vector-icons'
 import Avatar from '../components/Avatar'
 import NewTweetScreen from '../screens/NewTweetScreen'
+import { API, Auth, graphqlOperation } from 'aws-amplify'
+import { getUser } from '../graphql/queries'
 
 export default function Navigation({
     colorScheme,
@@ -45,10 +42,6 @@ export default function Navigation({
     )
 }
 
-/**
- * A root stack navigator is often used for displaying modals on top of all other content.
- * https://reactnavigation.org/docs/modal
- */
 const Stack = createNativeStackNavigator<RootStackParamList>()
 
 function RootNavigator() {
@@ -73,14 +66,27 @@ function RootNavigator() {
     )
 }
 
-/**
- * A bottom tab navigator displays tab buttons on the bottom of the display to switch screens.
- * https://reactnavigation.org/docs/bottom-tab-navigator
- */
 const BottomTab = createBottomTabNavigator<RootTabParamList>()
 
 function BottomTabNavigator() {
     const colorScheme = useColorScheme()
+
+    const [user, setUser] = React.useState()
+
+    React.useEffect(() => {
+        const fetchUser = async () => {
+            const authUser = await Auth.currentAuthenticatedUser()
+            try {
+                const { data } = await API.graphql(
+                    graphqlOperation(getUser, { id: authUser.attributes.sub })
+                )
+                setUser(data.getUser)
+            } catch (error) {
+                console.log(error)
+            }
+        }
+        fetchUser()
+    }, [])
 
     return (
         <BottomTab.Navigator
@@ -103,10 +109,7 @@ function BottomTabNavigator() {
                                 marginLeft: 10,
                             }}
                         >
-                            <Avatar
-                                image="https://avatars.githubusercontent.com/u/81810944?v=4"
-                                size={42}
-                            />
+                            <Avatar image={user?.image} size={42} />
                         </Pressable>
                     ),
                     headerTitleAlign: 'center',
