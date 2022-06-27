@@ -5,22 +5,45 @@ import {
     TouchableOpacity,
     View,
 } from 'react-native'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { StatusBar } from 'expo-status-bar'
 import { AntDesign } from '@expo/vector-icons'
 import Colors from '../constants/Colors'
 import Avatar from '../components/Avatar'
 import { useNavigation } from '@react-navigation/native'
+import { API, Auth, graphqlOperation } from 'aws-amplify'
+import { createTweet } from '../graphql/mutations'
 
 const NewTweetScreen = () => {
     const [tweet, setTweet] = useState('')
     const [url, setUrl] = useState('')
+
     const navigation = useNavigation()
-    const onSubmit = () => {
-        console.warn(url, tweet)
-        setTweet('')
-        setUrl('')
+
+    const createNewTweet = async (newTweet: any) => {
+        try {
+            await API.graphql(
+                graphqlOperation(createTweet, { input: newTweet })
+            )
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const onPress = async () => {
+        const authUser = await Auth.currentAuthenticatedUser()
+        if (authUser && tweet) {
+            const newTweet = {
+                content: tweet,
+                image: url,
+                userId: authUser.attributes.sub,
+            }
+            await createNewTweet(newTweet)
+            setTweet('')
+            setUrl('')
+            navigation.navigate('Home')
+        }
     }
 
     return (
@@ -34,7 +57,7 @@ const NewTweetScreen = () => {
                         color={Colors.light.tint}
                     />
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.button} onPress={onSubmit}>
+                <TouchableOpacity style={styles.button} onPress={onPress}>
                     <Text style={styles.text}>Tweet</Text>
                 </TouchableOpacity>
             </View>
