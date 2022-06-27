@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { TweetsProps } from '../types'
 import Icon from './Icon'
@@ -10,11 +10,19 @@ interface Props {
 }
 
 const MainTweetBody = ({ tweet }: Props) => {
+    const [isImage, setImage] = useState<boolean>(false)
     const { user, content, image, createdAt } = tweet
+
+    useEffect(() => {
+        if (image == '') {
+            setImage(false)
+        } else {
+            setImage(true)
+        }
+    }, [])
 
     return (
         <View style={styles.container}>
-            {/* username */}
             <View style={styles.header}>
                 <Text style={styles.name}>{user.name}</Text>
                 <Text style={styles.username}>{user.username}</Text>
@@ -27,14 +35,12 @@ const MainTweetBody = ({ tweet }: Props) => {
                     <Entypo name="chevron-down" size={21} color="grey" />
                 </TouchableOpacity>
             </View>
-            {/* content */}
             <View>
                 <Text style={styles.content}>{content}</Text>
-                {image && (
-                    <Image style={styles.image} source={{ uri: image }} />
+                {isImage && (
+                    <Image style={styles.image} source={{ uri: image || '' }} />
                 )}
             </View>
-            {/* footer */}
             <View style={styles.footer}>
                 <Icon name="comment" number={123} />
                 <Icon name="retweet" number={230} />
