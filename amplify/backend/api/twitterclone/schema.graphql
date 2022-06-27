@@ -9,15 +9,15 @@ type User @model {
     name: String!
     email: String!
     image: String
-    tweets: [Tweet] @hasMany
+    tweets: [Tweet] @hasMany(indexName: "byUser", fields: ["id"])
 }
 
 type Tweet @model {
     id: ID!
-    userId: ID!
+    userId: ID! @index(name: "byUser", sortKeyFields: ["content"])
     content: String!
     image: String
-    user: [User] @hasMany
+    user: User @hasOne(fields: ["userId"])
 }
 
 # type Comment @model {
