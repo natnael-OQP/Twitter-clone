@@ -40,7 +40,7 @@ function App() {
                         username: authUser.username,
                         name: authUser.username,
                         email: authUser.attributes.email,
-                        image: 'http://cdn.onlinewebfonts.com/svg/img_215059.png',
+                        image: 'https://pluspng.com/img-png/user-png-icon-download-icons-logos-emojis-users-2240.png',
                     }
                     await saveUserToDB(user)
                 } else {
