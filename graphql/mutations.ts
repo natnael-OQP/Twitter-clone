@@ -21,13 +21,11 @@ export const createUser = /* GraphQL */ `
           image
           createdAt
           updatedAt
-          userTweetsId
         }
         nextToken
       }
       createdAt
       updatedAt
-      tweetUserId
     }
   }
 `;
@@ -50,13 +48,11 @@ export const updateUser = /* GraphQL */ `
           image
           createdAt
           updatedAt
-          userTweetsId
         }
         nextToken
       }
       createdAt
       updatedAt
-      tweetUserId
     }
   }
 `;
@@ -79,13 +75,11 @@ export const deleteUser = /* GraphQL */ `
           image
           createdAt
           updatedAt
-          userTweetsId
         }
         nextToken
       }
       createdAt
       updatedAt
-      tweetUserId
     }
   }
 `;
@@ -100,21 +94,19 @@ export const createTweet = /* GraphQL */ `
       content
       image
       user {
-        items {
-          id
-          username
-          name
-          email
-          image
-          createdAt
-          updatedAt
-          tweetUserId
+        id
+        username
+        name
+        email
+        image
+        tweets {
+          nextToken
         }
-        nextToken
+        createdAt
+        updatedAt
       }
       createdAt
       updatedAt
-      userTweetsId
     }
   }
 `;
@@ -129,21 +121,19 @@ export const updateTweet = /* GraphQL */ `
       content
       image
       user {
-        items {
-          id
-          username
-          name
-          email
-          image
-          createdAt
-          updatedAt
-          tweetUserId
+        id
+        username
+        name
+        email
+        image
+        tweets {
+          nextToken
         }
-        nextToken
+        createdAt
+        updatedAt
       }
       createdAt
       updatedAt
-      userTweetsId
     }
   }
 `;
@@ -158,21 +148,19 @@ export const deleteTweet = /* GraphQL */ `
       content
       image
       user {
-        items {
-          id
-          username
-          name
-          email
-          image
-          createdAt
-          updatedAt
-          tweetUserId
+        id
+        username
+        name
+        email
+        image
+        tweets {
+          nextToken
         }
-        nextToken
+        createdAt
+        updatedAt
       }
       createdAt
       updatedAt
-      userTweetsId
     }
   }
 `;

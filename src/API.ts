@@ -7,8 +7,7 @@ export type CreateUserInput = {
   username: string,
   name: string,
   email: string,
-  image: string,
-  tweetUserId?: string | null,
+  image?: string | null,
 };
 
 export type ModelUserConditionInput = {
@@ -19,7 +18,6 @@ export type ModelUserConditionInput = {
   and?: Array< ModelUserConditionInput | null > | null,
   or?: Array< ModelUserConditionInput | null > | null,
   not?: ModelUserConditionInput | null,
-  tweetUserId?: ModelIDInput | null,
 };
 
 export type ModelStringInput = {
@@ -62,6 +60,63 @@ export type ModelSizeInput = {
   between?: Array< number | null > | null,
 };
 
+export type User = {
+  __typename: "User",
+  id: string,
+  username: string,
+  name: string,
+  email: string,
+  image?: string | null,
+  tweets?: ModelTweetConnection | null,
+  createdAt: string,
+  updatedAt: string,
+};
+
+export type ModelTweetConnection = {
+  __typename: "ModelTweetConnection",
+  items:  Array<Tweet | null >,
+  nextToken?: string | null,
+};
+
+export type Tweet = {
+  __typename: "Tweet",
+  id: string,
+  userId: string,
+  content: string,
+  image?: string | null,
+  user?: User | null,
+  createdAt: string,
+  updatedAt: string,
+};
+
+export type UpdateUserInput = {
+  id: string,
+  username?: string | null,
+  name?: string | null,
+  email?: string | null,
+  image?: string | null,
+};
+
+export type DeleteUserInput = {
+  id: string,
+};
+
+export type CreateTweetInput = {
+  id?: string | null,
+  userId: string,
+  content: string,
+  image?: string | null,
+};
+
+export type ModelTweetConditionInput = {
+  userId?: ModelIDInput | null,
+  content?: ModelStringInput | null,
+  image?: ModelStringInput | null,
+  and?: Array< ModelTweetConditionInput | null > | null,
+  or?: Array< ModelTweetConditionInput | null > | null,
+  not?: ModelTweetConditionInput | null,
+};
+
 export type ModelIDInput = {
   ne?: string | null,
   eq?: string | null,
@@ -78,80 +133,11 @@ export type ModelIDInput = {
   size?: ModelSizeInput | null,
 };
 
-export type User = {
-  __typename: "User",
-  id: string,
-  username: string,
-  name: string,
-  email: string,
-  image: string,
-  tweets?: ModelTweetConnection | null,
-  createdAt: string,
-  updatedAt: string,
-  tweetUserId?: string | null,
-};
-
-export type ModelTweetConnection = {
-  __typename: "ModelTweetConnection",
-  items:  Array<Tweet | null >,
-  nextToken?: string | null,
-};
-
-export type Tweet = {
-  __typename: "Tweet",
-  id: string,
-  userId: string,
-  content: string,
-  image?: string | null,
-  user?: ModelUserConnection | null,
-  createdAt: string,
-  updatedAt: string,
-  userTweetsId?: string | null,
-};
-
-export type ModelUserConnection = {
-  __typename: "ModelUserConnection",
-  items:  Array<User | null >,
-  nextToken?: string | null,
-};
-
-export type UpdateUserInput = {
-  id: string,
-  username?: string | null,
-  name?: string | null,
-  email?: string | null,
-  image?: string | null,
-  tweetUserId?: string | null,
-};
-
-export type DeleteUserInput = {
-  id: string,
-};
-
-export type CreateTweetInput = {
-  id?: string | null,
-  userId: string,
-  content: string,
-  image?: string | null,
-  userTweetsId?: string | null,
-};
-
-export type ModelTweetConditionInput = {
-  userId?: ModelIDInput | null,
-  content?: ModelStringInput | null,
-  image?: ModelStringInput | null,
-  and?: Array< ModelTweetConditionInput | null > | null,
-  or?: Array< ModelTweetConditionInput | null > | null,
-  not?: ModelTweetConditionInput | null,
-  userTweetsId?: ModelIDInput | null,
-};
-
 export type UpdateTweetInput = {
   id: string,
   userId?: string | null,
   content?: string | null,
   image?: string | null,
-  userTweetsId?: string | null,
 };
 
 export type DeleteTweetInput = {
@@ -167,7 +153,12 @@ export type ModelUserFilterInput = {
   and?: Array< ModelUserFilterInput | null > | null,
   or?: Array< ModelUserFilterInput | null > | null,
   not?: ModelUserFilterInput | null,
-  tweetUserId?: ModelIDInput | null,
+};
+
+export type ModelUserConnection = {
+  __typename: "ModelUserConnection",
+  items:  Array<User | null >,
+  nextToken?: string | null,
 };
 
 export type ModelTweetFilterInput = {
@@ -178,7 +169,6 @@ export type ModelTweetFilterInput = {
   and?: Array< ModelTweetFilterInput | null > | null,
   or?: Array< ModelTweetFilterInput | null > | null,
   not?: ModelTweetFilterInput | null,
-  userTweetsId?: ModelIDInput | null,
 };
 
 export type CreateUserMutationVariables = {
@@ -193,7 +183,7 @@ export type CreateUserMutation = {
     username: string,
     name: string,
     email: string,
-    image: string,
+    image?: string | null,
     tweets?:  {
       __typename: "ModelTweetConnection",
       items:  Array< {
@@ -204,13 +194,11 @@ export type CreateUserMutation = {
         image?: string | null,
         createdAt: string,
         updatedAt: string,
-        userTweetsId?: string | null,
       } | null >,
       nextToken?: string | null,
     } | null,
     createdAt: string,
     updatedAt: string,
-    tweetUserId?: string | null,
   } | null,
 };
 
@@ -226,7 +214,7 @@ export type UpdateUserMutation = {
     username: string,
     name: string,
     email: string,
-    image: string,
+    image?: string | null,
     tweets?:  {
       __typename: "ModelTweetConnection",
       items:  Array< {
@@ -237,13 +225,11 @@ export type UpdateUserMutation = {
         image?: string | null,
         createdAt: string,
         updatedAt: string,
-        userTweetsId?: string | null,
       } | null >,
       nextToken?: string | null,
     } | null,
     createdAt: string,
     updatedAt: string,
-    tweetUserId?: string | null,
   } | null,
 };
 
@@ -259,7 +245,7 @@ export type DeleteUserMutation = {
     username: string,
     name: string,
     email: string,
-    image: string,
+    image?: string | null,
     tweets?:  {
       __typename: "ModelTweetConnection",
       items:  Array< {
@@ -270,13 +256,11 @@ export type DeleteUserMutation = {
         image?: string | null,
         createdAt: string,
         updatedAt: string,
-        userTweetsId?: string | null,
       } | null >,
       nextToken?: string | null,
     } | null,
     createdAt: string,
     updatedAt: string,
-    tweetUserId?: string | null,
   } | null,
 };
 
@@ -293,23 +277,21 @@ export type CreateTweetMutation = {
     content: string,
     image?: string | null,
     user?:  {
-      __typename: "ModelUserConnection",
-      items:  Array< {
-        __typename: "User",
-        id: string,
-        username: string,
-        name: string,
-        email: string,
-        image: string,
-        createdAt: string,
-        updatedAt: string,
-        tweetUserId?: string | null,
-      } | null >,
-      nextToken?: string | null,
+      __typename: "User",
+      id: string,
+      username: string,
+      name: string,
+      email: string,
+      image?: string | null,
+      tweets?:  {
+        __typename: "ModelTweetConnection",
+        nextToken?: string | null,
+      } | null,
+      createdAt: string,
+      updatedAt: string,
     } | null,
     createdAt: string,
     updatedAt: string,
-    userTweetsId?: string | null,
   } | null,
 };
 
@@ -326,23 +308,21 @@ export type UpdateTweetMutation = {
     content: string,
     image?: string | null,
     user?:  {
-      __typename: "ModelUserConnection",
-      items:  Array< {
-        __typename: "User",
-        id: string,
-        username: string,
-        name: string,
-        email: string,
-        image: string,
-        createdAt: string,
-        updatedAt: string,
-        tweetUserId?: string | null,
-      } | null >,
-      nextToken?: string | null,
+      __typename: "User",
+      id: string,
+      username: string,
+      name: string,
+      email: string,
+      image?: string | null,
+      tweets?:  {
+        __typename: "ModelTweetConnection",
+        nextToken?: string | null,
+      } | null,
+      createdAt: string,
+      updatedAt: string,
     } | null,
     createdAt: string,
     updatedAt: string,
-    userTweetsId?: string | null,
   } | null,
 };
 
@@ -359,23 +339,21 @@ export type DeleteTweetMutation = {
     content: string,
     image?: string | null,
     user?:  {
-      __typename: "ModelUserConnection",
-      items:  Array< {
-        __typename: "User",
-        id: string,
-        username: string,
-        name: string,
-        email: string,
-        image: string,
-        createdAt: string,
-        updatedAt: string,
-        tweetUserId?: string | null,
-      } | null >,
-      nextToken?: string | null,
+      __typename: "User",
+      id: string,
+      username: string,
+      name: string,
+      email: string,
+      image?: string | null,
+      tweets?:  {
+        __typename: "ModelTweetConnection",
+        nextToken?: string | null,
+      } | null,
+      createdAt: string,
+      updatedAt: string,
     } | null,
     createdAt: string,
     updatedAt: string,
-    userTweetsId?: string | null,
   } | null,
 };
 
@@ -390,7 +368,7 @@ export type GetUserQuery = {
     username: string,
     name: string,
     email: string,
-    image: string,
+    image?: string | null,
     tweets?:  {
       __typename: "ModelTweetConnection",
       items:  Array< {
@@ -401,13 +379,11 @@ export type GetUserQuery = {
         image?: string | null,
         createdAt: string,
         updatedAt: string,
-        userTweetsId?: string | null,
       } | null >,
       nextToken?: string | null,
     } | null,
     createdAt: string,
     updatedAt: string,
-    tweetUserId?: string | null,
   } | null,
 };
 
@@ -426,14 +402,13 @@ export type ListUsersQuery = {
       username: string,
       name: string,
       email: string,
-      image: string,
+      image?: string | null,
       tweets?:  {
         __typename: "ModelTweetConnection",
         nextToken?: string | null,
       } | null,
       createdAt: string,
       updatedAt: string,
-      tweetUserId?: string | null,
     } | null >,
     nextToken?: string | null,
   } | null,
@@ -451,23 +426,21 @@ export type GetTweetQuery = {
     content: string,
     image?: string | null,
     user?:  {
-      __typename: "ModelUserConnection",
-      items:  Array< {
-        __typename: "User",
-        id: string,
-        username: string,
-        name: string,
-        email: string,
-        image: string,
-        createdAt: string,
-        updatedAt: string,
-        tweetUserId?: string | null,
-      } | null >,
-      nextToken?: string | null,
+      __typename: "User",
+      id: string,
+      username: string,
+      name: string,
+      email: string,
+      image?: string | null,
+      tweets?:  {
+        __typename: "ModelTweetConnection",
+        nextToken?: string | null,
+      } | null,
+      createdAt: string,
+      updatedAt: string,
     } | null,
     createdAt: string,
     updatedAt: string,
-    userTweetsId?: string | null,
   } | null,
 };
 
@@ -487,12 +460,17 @@ export type ListTweetsQuery = {
       content: string,
       image?: string | null,
       user?:  {
-        __typename: "ModelUserConnection",
-        nextToken?: string | null,
+        __typename: "User",
+        id: string,
+        username: string,
+        name: string,
+        email: string,
+        image?: string | null,
+        createdAt: string,
+        updatedAt: string,
       } | null,
       createdAt: string,
       updatedAt: string,
-      userTweetsId?: string | null,
     } | null >,
     nextToken?: string | null,
   } | null,
@@ -505,7 +483,7 @@ export type OnCreateUserSubscription = {
     username: string,
     name: string,
     email: string,
-    image: string,
+    image?: string | null,
     tweets?:  {
       __typename: "ModelTweetConnection",
       items:  Array< {
@@ -516,13 +494,11 @@ export type OnCreateUserSubscription = {
         image?: string | null,
         createdAt: string,
         updatedAt: string,
-        userTweetsId?: string | null,
       } | null >,
       nextToken?: string | null,
     } | null,
     createdAt: string,
     updatedAt: string,
-    tweetUserId?: string | null,
   } | null,
 };
 
@@ -533,7 +509,7 @@ export type OnUpdateUserSubscription = {
     username: string,
     name: string,
     email: string,
-    image: string,
+    image?: string | null,
     tweets?:  {
       __typename: "ModelTweetConnection",
       items:  Array< {
@@ -544,13 +520,11 @@ export type OnUpdateUserSubscription = {
         image?: string | null,
         createdAt: string,
         updatedAt: string,
-        userTweetsId?: string | null,
       } | null >,
       nextToken?: string | null,
     } | null,
     createdAt: string,
     updatedAt: string,
-    tweetUserId?: string | null,
   } | null,
 };
 
@@ -561,7 +535,7 @@ export type OnDeleteUserSubscription = {
     username: string,
     name: string,
     email: string,
-    image: string,
+    image?: string | null,
     tweets?:  {
       __typename: "ModelTweetConnection",
       items:  Array< {
@@ -572,13 +546,11 @@ export type OnDeleteUserSubscription = {
         image?: string | null,
         createdAt: string,
         updatedAt: string,
-        userTweetsId?: string | null,
       } | null >,
       nextToken?: string | null,
     } | null,
     createdAt: string,
     updatedAt: string,
-    tweetUserId?: string | null,
   } | null,
 };
 
@@ -590,23 +562,21 @@ export type OnCreateTweetSubscription = {
     content: string,
     image?: string | null,
     user?:  {
-      __typename: "ModelUserConnection",
-      items:  Array< {
-        __typename: "User",
-        id: string,
-        username: string,
-        name: string,
-        email: string,
-        image: string,
-        createdAt: string,
-        updatedAt: string,
-        tweetUserId?: string | null,
-      } | null >,
-      nextToken?: string | null,
+      __typename: "User",
+      id: string,
+      username: string,
+      name: string,
+      email: string,
+      image?: string | null,
+      tweets?:  {
+        __typename: "ModelTweetConnection",
+        nextToken?: string | null,
+      } | null,
+      createdAt: string,
+      updatedAt: string,
     } | null,
     createdAt: string,
     updatedAt: string,
-    userTweetsId?: string | null,
   } | null,
 };
 
@@ -618,23 +588,21 @@ export type OnUpdateTweetSubscription = {
     content: string,
     image?: string | null,
     user?:  {
-      __typename: "ModelUserConnection",
-      items:  Array< {
-        __typename: "User",
-        id: string,
-        username: string,
-        name: string,
-        email: string,
-        image: string,
-        createdAt: string,
-        updatedAt: string,
-        tweetUserId?: string | null,
-      } | null >,
-      nextToken?: string | null,
+      __typename: "User",
+      id: string,
+      username: string,
+      name: string,
+      email: string,
+      image?: string | null,
+      tweets?:  {
+        __typename: "ModelTweetConnection",
+        nextToken?: string | null,
+      } | null,
+      createdAt: string,
+      updatedAt: string,
     } | null,
     createdAt: string,
     updatedAt: string,
-    userTweetsId?: string | null,
   } | null,
 };
 
@@ -646,22 +614,20 @@ export type OnDeleteTweetSubscription = {
     content: string,
     image?: string | null,
     user?:  {
-      __typename: "ModelUserConnection",
-      items:  Array< {
-        __typename: "User",
-        id: string,
-        username: string,
-        name: string,
-        email: string,
-        image: string,
-        createdAt: string,
-        updatedAt: string,
-        tweetUserId?: string | null,
-      } | null >,
-      nextToken?: string | null,
+      __typename: "User",
+      id: string,
+      username: string,
+      name: string,
+      email: string,
+      image?: string | null,
+      tweets?:  {
+        __typename: "ModelTweetConnection",
+        nextToken?: string | null,
+      } | null,
+      createdAt: string,
+      updatedAt: string,
     } | null,
     createdAt: string,
     updatedAt: string,
-    userTweetsId?: string | null,
   } | null,
 };

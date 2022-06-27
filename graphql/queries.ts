@@ -18,13 +18,11 @@ export const getUser = /* GraphQL */ `
           image
           createdAt
           updatedAt
-          userTweetsId
         }
         nextToken
       }
       createdAt
       updatedAt
-      tweetUserId
     }
   }
 `;
@@ -46,7 +44,6 @@ export const listUsers = /* GraphQL */ `
         }
         createdAt
         updatedAt
-        tweetUserId
       }
       nextToken
     }
@@ -60,21 +57,19 @@ export const getTweet = /* GraphQL */ `
       content
       image
       user {
-        items {
-          id
-          username
-          name
-          email
-          image
-          createdAt
-          updatedAt
-          tweetUserId
+        id
+        username
+        name
+        email
+        image
+        tweets {
+          nextToken
         }
-        nextToken
+        createdAt
+        updatedAt
       }
       createdAt
       updatedAt
-      userTweetsId
     }
   }
 `;
@@ -91,11 +86,16 @@ export const listTweets = /* GraphQL */ `
         content
         image
         user {
-          nextToken
+          id
+          username
+          name
+          email
+          image
+          createdAt
+          updatedAt
         }
         createdAt
         updatedAt
-        userTweetsId
       }
       nextToken
     }
