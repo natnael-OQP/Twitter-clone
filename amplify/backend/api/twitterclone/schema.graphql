@@ -18,10 +18,20 @@ type Tweet @model {
     content: String!
     image: String
     user: User @hasOne(fields: ["userId"])
+    comments:[Comment] @hasMany(indexName:"byTweet",fields: ["id"]) 
+    likes:[Like] @hasMany(indexName:"byTweet",fields: ["id"]) 
 }
 
-# type Comment @model {
-#     id: ID!
-#     tweetId: String!
-#     content: String!
-# }
+type Comment @model {
+    id: ID!
+    tweetId: String! @index(name:"byTweet",sortKeyFields:["content"])
+    content: String!
+}
+
+type Like @model({queries:null}) {
+    id: ID!
+    userId: ID!
+    tweetId: ID!
+    user: User!
+    tweet: Tweet!
+}
