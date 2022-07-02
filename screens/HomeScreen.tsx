@@ -17,7 +17,9 @@ export default function HomeScreen({ navigation }: RootTabScreenProps<'Home'>) {
     const fetchTweets = async () => {
         setLoading(true)
         try {
-            const { data } = await API.graphql(graphqlOperation(listTweets))
+            const { data }: any = await API.graphql(
+                graphqlOperation(listTweets)
+            )
             setTweets(data.listTweets.items)
         } catch (error) {
             console.log(error)
@@ -30,16 +32,14 @@ export default function HomeScreen({ navigation }: RootTabScreenProps<'Home'>) {
         fetchTweets()
     }, [listTweets])
 
-    if (!tweets) {
-        return <Text>Loading ....</Text>
-    }
-
     return (
         <View style={styles.container}>
             <FlatList
                 data={tweets}
                 keyExtractor={(item) => item.id}
-                renderItem={({ item }) => <TweetComponent tweet={item} />}
+                renderItem={({ item }) => (
+                    <TweetComponent tweet={item} setTweets={setTweets} />
+                )}
                 showsVerticalScrollIndicator={false}
                 ItemSeparatorComponent={Separator}
                 refreshing={loading}
