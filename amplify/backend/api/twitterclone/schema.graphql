@@ -24,14 +24,14 @@ type Tweet @model {
 
 type Comment @model {
     id: ID!
-    tweetId: String! @index(name:"byTweet",sortKeyFields:["content"])
+    tweetId: ID! @index(name:"byTweet",sortKeyFields:["content"])
     content: String!
 }
 
-type Like @model({queries:null}) {
-    id: ID!
+type Like @model(queries: null) {
+    id: ID! @index(name:"byTweet")
     userId: ID!
     tweetId: ID!
-    user: User!
-    tweet: Tweet!
+    user: User  @hasOne(fields: ["userId"])
+    tweet: Tweet @hasOne(fields: ["tweetId"])
 }
