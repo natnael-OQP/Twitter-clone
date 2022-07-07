@@ -122,7 +122,6 @@ function BottomTabNavigator() {
                     ),
                     headerRight: () => (
                         <Pressable
-                            onPress={() => navigation.navigate('Modal')}
                             style={({ pressed }) => ({
                                 opacity: pressed ? 0.5 : 1,
                                 marginRight: 10,
