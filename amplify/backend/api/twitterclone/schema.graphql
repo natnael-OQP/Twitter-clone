@@ -29,9 +29,9 @@ type Comment @model {
 }
 
 type Like @model(queries: null) {
-    id: ID! @index(name:"byTweet")
+    id: ID! 
     userId: ID!
-    tweetId: ID!
+    tweetId: ID! @index(name:"byTweet")
     user: User  @hasOne(fields: ["userId"])
     tweet: Tweet @hasOne(fields: ["tweetId"])
 }
