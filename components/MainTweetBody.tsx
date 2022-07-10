@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { TweetsProps } from '../types'
-import Icon from './Icon'
 import { Entypo } from '@expo/vector-icons'
 import moment from 'moment'
+import Footer from './Footer'
 
 interface Props {
     tweet: TweetsProps
@@ -41,12 +41,7 @@ const MainTweetBody = ({ tweet }: Props) => {
                     <Image style={styles.image} source={{ uri: image || '' }} />
                 )}
             </View>
-            <View style={styles.footer}>
-                <Icon name="comment" number={123} />
-                <Icon name="retweet" number={230} />
-                <Icon name="heart" number={2300} />
-                <Icon name="share-google" />
-            </View>
+            <Footer />
         </View>
     )
 }
@@ -88,12 +83,5 @@ const styles = StyleSheet.create({
         aspectRatio: 5 / 3,
         marginTop: 10,
         borderRadius: 10,
-    },
-    footer: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        marginTop: 4,
-        marginLeft: -5,
     },
 })
