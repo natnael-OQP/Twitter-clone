@@ -1,4 +1,9 @@
-import { StyleSheet, Text, View } from 'react-native'
+import {
+    GestureResponderEvent,
+    Pressable,
+    StyleSheet,
+    Text,
+} from 'react-native'
 import { EvilIcons } from '@expo/vector-icons'
 
 interface Props {
@@ -6,14 +11,20 @@ interface Props {
     size?: number
     color?: string
     number?: number
+    onPress?: ((event: GestureResponderEvent) => void) | undefined
 }
 
-const Icon = ({ name, size = 35, color = 'grey', number }: Props) => {
+const Icon = ({ name, size = 35, color = 'grey', number, onPress }: Props) => {
     return (
-        <View style={styles.container}>
-            <EvilIcons name={name} size={size} color={color} />
+        <Pressable style={styles.container} onPress={onPress}>
+            <EvilIcons
+                name={name}
+                size={size}
+                color={color}
+                onPress={onPress}
+            />
             {number && <Text style={styles.iconText}>{number}</Text>}
-        </View>
+        </Pressable>
     )
 }
 
