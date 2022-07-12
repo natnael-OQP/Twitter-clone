@@ -4,26 +4,35 @@ import {
     StyleSheet,
     Text,
 } from 'react-native'
-import { EvilIcons } from '@expo/vector-icons'
+import { EvilIcons, AntDesign } from '@expo/vector-icons'
 
 interface Props {
     name: string
     size?: number
     color?: string
-    number?: number
+    number?: any
     onPress?: ((event: GestureResponderEvent) => void) | undefined
 }
 
 const Icon = ({ name, size = 35, color = 'grey', number, onPress }: Props) => {
     return (
         <Pressable style={styles.container} onPress={onPress}>
-            <EvilIcons
-                name={name}
-                size={size}
-                color={color}
-                onPress={onPress}
-            />
-            {number && <Text style={styles.iconText}>{number}</Text>}
+            {name === 'hearto' || name === 'heart' ? (
+                <AntDesign
+                    name={name}
+                    size={size}
+                    color={color}
+                    onPress={onPress}
+                />
+            ) : (
+                <EvilIcons
+                    name={name}
+                    size={size}
+                    color={color}
+                    onPress={onPress}
+                />
+            )}
+            <Text style={styles.iconText}>{number}</Text>
         </Pressable>
     )
 }
