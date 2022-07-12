@@ -11,7 +11,8 @@ interface Props {
 
 const MainTweetBody = ({ tweet }: Props) => {
     const [isImage, setImage] = useState<boolean>(false)
-    const { user, content, image, createdAt } = tweet
+
+    const { user, content, image, createdAt, id } = tweet
 
     useEffect(() => {
         if (image == '') {
@@ -41,7 +42,7 @@ const MainTweetBody = ({ tweet }: Props) => {
                     <Image style={styles.image} source={{ uri: image || '' }} />
                 )}
             </View>
-            <Footer />
+            <Footer id={id} tweet={tweet} />
         </View>
     )
 }
