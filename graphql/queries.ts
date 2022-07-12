@@ -94,39 +94,46 @@ export const getTweet = /* GraphQL */ `
   }
 `;
 export const listTweets = /* GraphQL */ `
-  query ListTweets(
-    $filter: ModelTweetFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listTweets(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        userId
-        content
-        image
-        user {
-          id
-          username
-          name
-          email
-          image
-          createdAt
-          updatedAt
+    query ListTweets(
+        $filter: ModelTweetFilterInput
+        $limit: Int
+        $nextToken: String
+    ) {
+        listTweets(filter: $filter, limit: $limit, nextToken: $nextToken) {
+            items {
+                id
+                userId
+                content
+                image
+                user {
+                    id
+                    username
+                    name
+                    email
+                    image
+                    createdAt
+                    updatedAt
+                }
+                comments {
+                    nextToken
+                }
+                likes {
+                    items {
+                        id
+                        userId
+                        tweetId
+                        createdAt
+                        updatedAt
+                    }
+                    nextToken
+                }
+                createdAt
+                updatedAt
+            }
+            nextToken
         }
-        comments {
-          nextToken
-        }
-        likes {
-          nextToken
-        }
-        createdAt
-        updatedAt
-      }
-      nextToken
     }
-  }
-`;
+`
 export const getComment = /* GraphQL */ `
   query GetComment($id: ID!) {
     getComment(id: $id) {
