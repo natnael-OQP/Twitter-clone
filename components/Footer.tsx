@@ -25,12 +25,9 @@ const Footer = ({ id, tweet }: Props) => {
             SetLikesCounter(likesCounter - 1)
             setLiked('')
             try {
-                console.log(isLiked)
-
-                const res = await API.graphql(
+                await API.graphql(
                     graphqlOperation(deleteLike, { input: { id: isLiked } })
                 )
-                console.log(res)
             } catch (error) {
                 console.log(error)
             }
