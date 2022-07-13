@@ -1,0 +1,13 @@
+{
+  "resourceName": "twitterclone",
+  "policyUUID": "c139998f",
+  "bucketName": "twitterclonebucket",
+  "storageAccess": "auth",
+  "guestAccess": [],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ"
+  ],
+  "triggerFunction": "NONE",
+  "groupAccess": {}
+}
