@@ -19,6 +19,8 @@ import { createTweet } from '../graphql/mutations'
 import { getUser } from '../graphql/queries'
 import * as ImagePicker from 'expo-image-picker'
 import Constants from 'expo-constants'
+import 'react-native-get-random-values'
+import { v4 as uuidv4 } from 'uuid'
 
 const NewTweetScreen = () => {
     const [tweet, setTweet] = useState('')
@@ -65,13 +67,15 @@ const NewTweetScreen = () => {
         if (!result.cancelled) {
             setPercentage(0)
             setImage(result.uri)
-            // upload image
-            await uploadImage('demo.jpg', result.uri)
+            await uploadImage(result.uri)
         }
     }
 
     // handelUpload
-    const uploadImage = async ({ filename, img }: any) => {
+    const uploadImage = async ({ img }: any) => {
+        const extension = img?.split('.')[img.split('.').length - 1]
+        const filename = `${uuidv4()}.${extension}`
+
         Auth.currentCredentials()
         try {
             const res = await Storage.put(filename, img, {
